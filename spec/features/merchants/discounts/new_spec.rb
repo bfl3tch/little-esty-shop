@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe 'The merchant discounts new discount page' do
   before :each do
     @merchant1 = Merchant.create!(name: 'Tom Holland')
-    allow(API).to receive(:next_three_holidays).and_return({"Labour Day" => "2021-09-06", "Columbus Day" => "2021-10-11", "Veterans Day" => '2021-11-11'})
-
-    @holidays = API.next_three_holidays
+    allow(API).to receive(:upcoming_holidays).and_return({"Labor Day" => "2021-09-06", "Columbus Day" => "2021-10-11", "Veterans Day" => '2021-11-11'})
+    @holidays = API.upcoming_holidays
 
     visit new_merchant_discount_path(@merchant1)
   end
