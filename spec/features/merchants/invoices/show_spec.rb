@@ -58,7 +58,7 @@ RSpec.describe "The Merchant Invoice show page" do
     @discount1 = @merchant1.discounts.create(name: 'Twoten', threshold: 2, percentage: 10)
     @discount2 = @merchant1.discounts.create(name: 'Fourscore', threshold: 3, percentage: 20)
     @discount3 = @merchant1.discounts.create(name: 'Ninetwentynine', threshold: 9, percentage: 29)
-    @discount4 = @merchant1.discounts.create(name: 'Twentyfifty', threshold: 20, percentage: 50)
+    @discount4 = @merchant2.discounts.create(name: 'Twentyfifty', threshold: 20, percentage: 50)
 
 
     visit merchant_invoice_path(@merchant1.id, @invoice1.id)
@@ -123,12 +123,16 @@ RSpec.describe "The Merchant Invoice show page" do
 
   it 'has a link to the bulk discount if one was applied' do
     expect(page).to have_content("Discount Applied: ")
+
     expect(page).to have_link("#{@discount2.name}")
   end
 
-  it 'has a link to the bulk discount if one was applied' do
+  it 'does not display the discount info if one isnt applicable' do
     visit merchant_invoice_path(@merchant2.id, @invoice2.id)
 
+    expect(page).to have_content("Total Invoice Revenue Potential: $1,200.00")
     expect(page).to_not have_content("Discount Applied: ")
+    expect(page).to_not have_link("#{@discount4.name}")
+
   end
 end
