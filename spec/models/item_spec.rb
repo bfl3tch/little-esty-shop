@@ -27,7 +27,13 @@ RSpec.describe Item do
       end
     end
 
-
+    describe '#item_best_day' do
+      it 'determines the day with the most sales for a particular item' do
+        expect(@item_1.item_best_day(@item_1.id).first.daily_sales).to eq(3)
+        expect(@item_2.item_best_day(@item_2.id).first.daily_sales).to eq(5)
+        expect(@item_3.item_best_day(@item_3.id).first.daily_sales).to eq(1)
+      end
+    end
   end
 
   describe 'class methods' do
@@ -104,14 +110,6 @@ RSpec.describe Item do
       end
     end
 
-    describe '#item_best_day' do
-      it 'determines the day with the most sales for a particular item' do
-        expect(@item_1.item_best_day(@item_1.id).first.daily_sales).to eq(3)
-        expect(@item_2.item_best_day(@item_2.id).first.daily_sales).to eq(5)
-        expect(@item_3.item_best_day(@item_3.id).first.daily_sales).to eq(1)
-      end
-    end
-
     describe '::enabled_items' do
       it "selects all merchant's items with enabled status" do
         @item_4 = Item.create!(name: 'Hammer', description: 'pound stuff', unit_price: 10_000, merchant_id: @merchant_1.id, enable: 'disable')
@@ -139,6 +137,5 @@ RSpec.describe Item do
         expect(@merchant_1.items.order_by_name(:name)).to eq([@item_2, @item_3, @item_1])
       end
     end
-
   end
 end
