@@ -75,7 +75,6 @@ RSpec.describe InvoiceItem do
       @discount2 = @merchant1.discounts.create(name: 'Fourscore', threshold: 3, percentage: 20)
       @discount3 = @merchant1.discounts.create(name: 'Ninetwentynine', threshold: 9, percentage: 29)
       @discount4 = @merchant1.discounts.create(name: 'Twentyfifty', threshold: 20, percentage: 50)
-
       @discount6 = @merchant2.discounts.create(name: 'Two', threshold: 100, percentage: 2)
     end
 
@@ -96,7 +95,7 @@ RSpec.describe InvoiceItem do
         expect(@invoice_item1.revenue_after_discount).to eq(36)
       end
 
-      it 'returns fthe full amount if no discount is eligible' do
+      it 'returns the full amount if no discount is eligible' do
         expect(@invoice_item4.revenue_after_discount).to eq(@invoice_item4.full_amount)
       end
     end
