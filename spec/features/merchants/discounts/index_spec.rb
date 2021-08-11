@@ -12,9 +12,8 @@ RSpec.describe 'The merchant discounts index page' do
     @discount5 = @merchant1.discounts.create(name: 'Hundredseventyfive', threshold: 100, percentage: 75)
     @discount6 = @merchant2.discounts.create(name: 'Two', threshold: 2, percentage: 2)
 
-    allow(API).to receive(:next_three_holidays).and_return({"Labour Day" => "2021-09-06", "Columbus Day" => "2021-10-11", "Veterans Day" => '2021-11-11'})
-
-    @holidays = API.next_three_holidays
+    allow(API).to receive(:upcoming_holidays).and_return({"Labor Day" => "2021-09-06", "Columbus Day" => "2021-10-11", "Veterans Day" => '2021-11-11'})
+    @holidays = API.upcoming_holidays
 
     visit merchant_discounts_path(@merchant1.id)
   end
@@ -100,6 +99,15 @@ RSpec.describe 'The merchant discounts index page' do
   it 'directs to to a discount creation new page when clicking those links' do
     click_on "Create discount for #{@holidays.keys.first}"
     expect(current_path).to eq(new_merchant_discount_path(@merchant1))
+  end
+
+  it 'autopopulates on the next page the holiday name and default values of 2 and 30' do
+    click_on "Create discount for #{@holidays.keys.first}"
+    expect(current_path).to eq(new_merchant_discount_path(@merchant1))
+
+    expect(page).to have_field('Name', with: "#{@holidays.keys.first} discount")
+    expect(page).to have_field('Threshold', with: '2')
+    expect(page).to have_field('Percentage', with: '30')
   end
 
 end

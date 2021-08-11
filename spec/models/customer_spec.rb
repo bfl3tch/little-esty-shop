@@ -10,7 +10,6 @@ RSpec.describe Customer do
   describe 'validations' do
     it { should validate_presence_of :first_name }
     it { should validate_presence_of :last_name }
-    # it { should validate_numericality_of(:length).only_integer }
   end
 
   describe 'class methods' do
@@ -75,7 +74,6 @@ RSpec.describe Customer do
 
       @customer_6 = Customer.create!(first_name: 'Jack', last_name: 'Welker')
       @customer_7 = Customer.create!(first_name: 'Todd', last_name: 'Alquist')
-
     end
 
     it 'can return for a given merchant the 5 #top_customers_for_merchant' do

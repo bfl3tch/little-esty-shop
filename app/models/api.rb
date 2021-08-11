@@ -54,8 +54,8 @@ class API
     end
   end
 
-  def self.next_three_holidays
-    APIS::Holidays.new(render_request(holidays[:upcoming_year])).all_holidays
+  def self.upcoming_holidays
+    APIS::Holidays.new(render_request(holidays[:upcoming_year])).all_holidays_in_upcoming_order
   end
 
 
