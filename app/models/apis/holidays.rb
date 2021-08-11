@@ -5,11 +5,11 @@ module APIS
       @response_body = response_body
     end
 
-    def all_holidays
+    def all_holidays_in_upcoming_order
       grouping = Hash.new(0)
       @response_body.each do |holiday|
         if !holiday['name'].nil?
-          grouping[holiday['name']] = holiday['date']
+          grouping[holiday['localName']] = holiday['date']
         end
       end
       grouping
