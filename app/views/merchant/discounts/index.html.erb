@@ -1,6 +1,7 @@
 <h1>Bulk Discounts for <%= @merchant.name  %></h1>
 
 <div align="center">
+  <%= link_to "Back to #{@merchant.name}", merchant_dashboard_index_path(@merchant), class:"btn btn-outline-dark navbar-custom" %>
   <%= link_to 'Create Discount', new_merchant_discount_path(@merchant), class:"btn btn-outline-dark navbar-custom" %>
 </div>
 <br/>
