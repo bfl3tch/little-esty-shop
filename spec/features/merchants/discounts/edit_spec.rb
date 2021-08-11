@@ -6,8 +6,8 @@ RSpec.describe 'The merchants discount edit page' do
 
     @discount1 = @merchant1.discounts.create(name: 'Threeteen', threshold: 3, percentage: 15)
 
-    allow(API).to receive(:next_three_holidays).and_return({"Labour Day" => "2021-09-06", "Columbus Day" => "2021-10-11", "Veterans Day" => '2021-11-11'})
-    @holidays = API.next_three_holidays
+    allow(API).to receive(:upcoming_holidays).and_return({"Labor Day" => "2021-09-06", "Columbus Day" => "2021-10-11", "Veterans Day" => '2021-11-11'})
+    @holidays = API.upcoming_holidays
 
     visit edit_merchant_discount_path(@merchant1, @discount1)
   end
