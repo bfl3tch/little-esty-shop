@@ -105,7 +105,7 @@ RSpec.describe 'The merchant discounts index page' do
     click_on "Create discount for #{@holidays.keys.first}"
     expect(current_path).to eq(new_merchant_discount_path(@merchant1))
 
-    expect(page).to have_field('Name', with: "#{@holidays.keys.first} discount")
+    expect(page).to have_field('Name', with: "#{@holidays.keys.first}")
     expect(page).to have_field('Threshold', with: '2')
     expect(page).to have_field('Percentage', with: '30')
   end

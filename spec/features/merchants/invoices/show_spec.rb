@@ -116,12 +116,6 @@ RSpec.describe "The Merchant Invoice show page" do
   it 'displays the total revenue potential generated from all the items on this invoice' do
     expect(page).to have_content("Total Invoice Revenue Potential: $765.00")
   end
-#
-#   As a merchant
-# When I visit my merchant invoice show page
-# Then I see the total revenue for my merchant from this invoice (not including discounts)
-# And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation
-
 
   it 'displays the total discounted revenue for the merchant from this invoice including discounts in calculation' do
     expect(page).to have_content("Total Revenue After Discounts: $615.00")
@@ -130,5 +124,11 @@ RSpec.describe "The Merchant Invoice show page" do
   it 'has a link to the bulk discount if one was applied' do
     expect(page).to have_content("Discount Applied: ")
     expect(page).to have_link("#{@discount2.name}")
+  end
+
+  it 'has a link to the bulk discount if one was applied' do
+    visit merchant_invoice_path(@merchant2.id, @invoice2.id)
+
+    expect(page).to_not have_content("Discount Applied: ")
   end
 end
