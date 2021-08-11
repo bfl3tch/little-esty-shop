@@ -81,12 +81,15 @@ RSpec.describe InvoiceItem do
     describe '#full_amount' do
       it 'calculates the full amount of the invoice item' do
         expect(@invoice_item1.full_amount).to eq(45)
+        expect(@invoice_item2.full_amount).to eq(500)
+        expect(@invoice_item3.full_amount).to eq(600)
       end
     end
 
     describe '#invoice_item_discount' do
       it 'determines the discount to apply' do
         expect(@invoice_item1.invoice_item_discount).to eq(@discount2)
+        expect(@invoice_item2.invoice_item_discount).to eq(@discount1)
       end
     end
 
