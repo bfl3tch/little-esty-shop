@@ -11,29 +11,16 @@ RSpec.describe 'The merchants discount edit page' do
 
     visit edit_merchant_discount_path(@merchant1, @discount1)
   end
-#
-#   As a merchant
-
-# Then I am taken to a new page with a form to edit the discount
-# And I see that the discounts current attributes are pre-poluated in the form
-# When I change any/all of the information and click submit
-# Then I am redirected to the bulk discount's show page
-# And I see that the discount's attributes have been updated
 
   it 'displays a form to edit the discount' do
     expect(page).to have_content("Editing #{@discount1.name}")
     expect(find_field('Percentage').value).to eq('15')
-    # expect(find_field(:percentage).value).to eq 'John'
-    # expect(find_field(:percentage).value).to eq 'John'
-    # expect(find_field(:percentage).value).to eq 'John'
   end
 
   it 'wont let you submit a form without all the necessary data' do
 
     expect(page).to have_content("#{@discount1.threshold}")
     expect(find_field('Percentage').value).to eq('15')
-    # save_and_open_page
-    # expect(page).to have_content("#{@discount1.percentage}")
 
     fill_in 'Percentage', with: ""
     click_on "Update Discount"
@@ -44,8 +31,7 @@ RSpec.describe 'The merchants discount edit page' do
   end
 
   it 'wont let you submit a form without all the necessary data' do
-
-
+    expect(page).to have_content('3')
     fill_in 'Threshold', with: '0'
     click_on "Update Discount"
 
