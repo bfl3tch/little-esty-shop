@@ -19,7 +19,7 @@
             <%= link_to "#{@next_three_holidays.keys.first} Discount", merchant_discount_path(@merchant, @discount1), class:"btn btn-outline-dark navbar-custom btn-sm" %>
 
           <% else %>
-            <%= link_to "Create discount for #{@next_three_holidays.keys.first}", new_merchant_discount_path(@merchant, params: {discount: "#{@next_three_holidays.keys.first} discount",threshold: '2', percentage: '30' }), class:"btn btn-outline-dark navbar-custom btn-sm" %>
+            <%= link_to "Create discount for #{@next_three_holidays.keys.first}", new_merchant_discount_path(@merchant, params: {discount: "#{@next_three_holidays.keys.first}",threshold: '2', percentage: '30' }), class:"btn btn-outline-dark navbar-custom btn-sm" %>
           <% end %>
         </td>
 
@@ -29,7 +29,7 @@
             <%= link_to "#{@next_three_holidays.keys.second} Discount", merchant_discount_path(@merchant, @discount2), class:"btn btn-outline-dark navbar-custom btn-sm" %>
 
           <% else %>
-            <%= link_to "Create discount for #{@next_three_holidays.keys.second}", new_merchant_discount_path(@merchant, params: {discount: "#{@next_three_holidays.keys.second} discount",threshold: '2', percentage: '30' }), class:"btn btn-outline-dark navbar-custom btn-sm" %>
+            <%= link_to "Create discount for #{@next_three_holidays.keys.second}", new_merchant_discount_path(@merchant, params: {discount: "#{@next_three_holidays.keys.second}",threshold: '2', percentage: '30' }), class:"btn btn-outline-dark navbar-custom btn-sm" %>
           <% end %>
         </td>
 
@@ -39,7 +39,7 @@
             <%= link_to "#{@next_three_holidays.keys.third} Discount", merchant_discount_path(@merchant, @discount3), class:"btn btn-outline-dark navbar-custom btn-sm" %>
 
           <% else %>
-            <%= link_to "Create discount for #{@next_three_holidays.keys.third}", new_merchant_discount_path(@merchant, params: {discount: "#{@next_three_holidays.keys.third} discount",threshold: '2', percentage: '30' }), class:"btn btn-outline-dark navbar-custom btn-sm" %>
+            <%= link_to "Create discount for #{@next_three_holidays.keys.third}", new_merchant_discount_path(@merchant, params: {discount: "#{@next_three_holidays.keys.third}",threshold: '2', percentage: '30' }), class:"btn btn-outline-dark navbar-custom btn-sm" %>
           <% end %>
         </td>
       </tr>
